@@ -5,17 +5,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BoardTest {
+class SquareTest {
     String name = "test";
-    Board b;
+
+    Square s;
 
     @BeforeEach
     void setUp() {
-        b = new Board(name);
+        s = new Square(name);
     }
 
     @Test
     void getName() {
-        assertEquals(name, b.getName());
+        assertEquals(name, s.getName());
     }
 }
