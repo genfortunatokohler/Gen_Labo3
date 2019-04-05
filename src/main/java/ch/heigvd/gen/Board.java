@@ -28,5 +28,9 @@ public class Board {
     public ArrayList<Square> getSquares() {
         return squares;
     }
+
+    public Square getSquare(Square oldLoc, int fvTot) {
+        return squares.get((squares.indexOf(oldLoc) + fvTot) % squareCount);
+    }
 }
 
