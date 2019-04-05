@@ -16,6 +16,6 @@ class PieceTest {
 
     @Test
     void getName() {
-        assertEquals(p.getName(), name);
+        assertEquals(name, p.getName());
     }
 }
