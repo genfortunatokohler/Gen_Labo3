@@ -1,14 +1,22 @@
 package ch.heigvd.gen;
 
-public class Board {
-    final String name;
+import java.util.ArrayList;
 
-    public Board(String name) {
-        this.name = name;
+public class Board {
+    private static final int squareCount = 40;
+    private final ArrayList<Square> squares;
+
+    public Board() {
+        squares = new ArrayList<>(squareCount);
+
+        for (int i = 0; i < squareCount; i++) {
+            squares.add(new Square(Integer.toString(i)));
+        }
+
     }
 
-    public String getName() {
-        return name;
+    public ArrayList<Square> getSquares() {
+        return squares;
     }
 }
 
