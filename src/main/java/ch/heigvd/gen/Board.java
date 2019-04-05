@@ -30,6 +30,9 @@ public class Board {
     }
 
     public Square getSquare(Square oldLoc, int fvTot) {
+        if (fvTot < 0)
+            throw new IllegalArgumentException();
+
         return squares.get((squares.indexOf(oldLoc) + fvTot) % squareCount);
     }
 }
