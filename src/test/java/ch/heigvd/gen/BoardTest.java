@@ -1,11 +1,9 @@
 package ch.heigvd.gen;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,5 +24,11 @@ class BoardTest {
         assertEquals(Integer.toString(cellNumber), b.getSquares().get(cellNumber).getName());
     }
 
+    @Test
+    void getSquareLocationCorrect() {
+        Square first = b.getSquares().get(0);
+        assertEquals(b.getSquares().get(5), b.getSquare(first, 5));
+
+    }
 
 }
