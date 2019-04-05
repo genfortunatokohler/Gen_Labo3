@@ -6,16 +6,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PieceTest {
-    String name = "name";
+    String pName = "pName";
+    String lName = "lName";
+    Square l;
     Piece p;
 
     @BeforeEach
     void setUp() {
-        p = new Piece(name);
+        l = new Square(lName);
+        p = new Piece(pName);
     }
 
     @Test
     void getName() {
-        assertEquals(name, p.getName());
+        assertEquals(pName, p.getName());
+    }
+
+    @Test
+    void location() {
+        assertEquals(null, p.getLocation());
+
+        p.setLocation(l);
+        assertEquals(l, p.getLocation());
     }
 }
