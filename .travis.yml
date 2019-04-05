@@ -1,0 +1,11 @@
+language: java
+
+# cache downloaded maven plugins
+cache:
+  directories:
+    - $HOME/.m2
+
+script:
+  - mvn clean test
+
+
