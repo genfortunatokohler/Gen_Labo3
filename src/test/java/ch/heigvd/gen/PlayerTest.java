@@ -41,6 +41,9 @@ class PlayerTest {
         int oldCash = player.getNetWorth();
         player.addCash(504);
         assertEquals(oldCash + 504, player.getNetWorth());
+        assertThrows(IllegalArgumentException.class, () -> {
+            player.addCash(-5);
+        });
     }
 
     @BeforeEach
@@ -49,8 +52,10 @@ class PlayerTest {
         int oldCash = player.getNetWorth();
         player.reduceCash(504);
         assertEquals(oldCash - 504, player.getNetWorth());
+        assertThrows(IllegalArgumentException.class, () -> {
+            player.reduceCash(-5);
+        });
     }
-
 
 
     @Test
