@@ -1,28 +1,30 @@
 package ch.heigvd.gen;
 
+import java.util.ArrayList;
+
 public class MonopolyGame {
     final private int N = 20;
     final private Board board;
-    final private Die[] die;
-    final private Player[] players;
+    final private Cup cup;
+    final private String[] pieces;
+    final private ArrayList<Player> players;
 
     private int roundCnt;
 
-    public MonopolyGame(Board board, Die[] die, Player[] players) {
-        this.board = board;
-        this.die = die;
-        this.players = players;
+    public MonopolyGame(String[] players) {
+        this.board = new Board();
+        this.cup = new Cup(new Die[]{new Die(), new Die()});
+        this.players = new ArrayList<>();
+        pieces = new String[]{"Iron", "Horseshoe"};
+
+        int cnt = 0;
+        for(String name : players) {
+            this.players.add(new Player(board, cup, name, pieces[cnt],2500));
+            ++cnt;
+        }
     }
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public Die[] getDie() {
-        return die;
-    }
-
-    public Player[] getPlayers() {
+    public ArrayList<Player> getPlayers() {
         return players;
     }
 
@@ -41,11 +43,8 @@ public class MonopolyGame {
     }
 
     public static void main(String[] args) {
-        Board board = new Board();
-        Die[] die = {new Die(), new Die()};
-        Piece[] pieces = {new Piece("Iron"), new Piece("Horseshoe")};
-        Player[] players = {new Player(board, die, "Pierre", pieces[0], 2500), new Player(board, die, "Filipe", pieces[1], 2500)};
-        MonopolyGame monopolyGame = new MonopolyGame(board, die, players);
+        String[] players = new String[]{"Pierre", "Filipe"};
+        MonopolyGame monopolyGame = new MonopolyGame(players);
 
         monopolyGame.playGame();
     }

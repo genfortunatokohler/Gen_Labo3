@@ -12,21 +12,18 @@ class MonopolyGameTest {
     static Board board;
     static Die[] die;
     static Piece[] pieces;
-    static Player[] players;
+    static String[] players;
     static MonopolyGame monopolyGame;
 
     @BeforeEach
     void reset() {
-        board = new Board();
-        die = new Die[]{new Die(), new Die()};
-        pieces = new Piece[]{new Piece("Iron"), new Piece("Horseshoe")};
-        players = new Player[]{new Player(board, die, "Pierre", pieces[0], 2500), new Player(board, die, "Filipe", pieces[1], 2500)};
-        monopolyGame = new MonopolyGame(board, die, players);
+        players = new String[]{"Pierre", "Filipe"};
+        monopolyGame = new MonopolyGame(players);
     }
 
     @Test
     void startPlayersAreDifferent() {
-        assertNotEquals(monopolyGame.getPlayers()[0], monopolyGame.getPlayers()[1]);
+        assertNotEquals(monopolyGame.getPlayers().get(0), monopolyGame.getPlayers().get(1));
     }
 
     @Test

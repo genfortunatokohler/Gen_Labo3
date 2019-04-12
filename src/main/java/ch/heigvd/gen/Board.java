@@ -1,10 +1,6 @@
 package ch.heigvd.gen;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Board {
     private static final int squareCount = 40;
     private final ArrayList<Square> squares;
