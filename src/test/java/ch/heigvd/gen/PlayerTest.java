@@ -1,5 +1,6 @@
 package ch.heigvd.gen;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
@@ -13,8 +14,8 @@ class PlayerTest {
     static Board board;
     static Player player;
 
-    @BeforeEach
-    void reset() {
+    @BeforeAll
+    static void setUp() {
         board = new Board();
         player = new Player(board, die, name, piece, 500);
     }
@@ -30,16 +31,27 @@ class PlayerTest {
     }
 
     @Test
-    void getCash() {
-        assertEquals(500, player.getCash());
+    void getNetWorth() {
+        assertEquals(500, player.getNetWorth());
     }
 
+    @BeforeEach
     @Test
     void addCash() {
-        int oldCash = player.getCash();
+        int oldCash = player.getNetWorth();
         player.addCash(504);
-        assertEquals(oldCash + 504, player.getCash());
+        assertEquals(oldCash + 504, player.getNetWorth());
     }
+
+    @BeforeEach
+    @Test
+    void reduceCash() {
+        int oldCash = player.getNetWorth();
+        player.reduceCash(504);
+        assertEquals(oldCash - 504, player.getNetWorth());
+    }
+
+
 
     @Test
     void setLocation() {
