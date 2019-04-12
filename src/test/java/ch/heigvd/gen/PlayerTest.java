@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PlayerTest {
     static String name = "Toto";
     static Piece piece = new Piece("name");
-    static Die[] die = {new Die()};
+    static Die[] die = {new Die(), new Die()};
     static Board board;
     static Player player;
 
@@ -39,6 +39,6 @@ class PlayerTest {
         int newLoc = board.getSquares().indexOf(player.getPiece().getLocation());
 
         int shift = Math.floorMod((newLoc - oldLoc), board.getSquares().size());
-        assertTrue(shift > 0 && shift <= 12, Integer.toString(shift));
+        assertTrue(shift >= 2 && shift <= 12, Integer.toString(shift));
     }
 }

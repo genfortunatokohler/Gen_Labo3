@@ -31,6 +31,9 @@ public class Player {
             fvTot += dice.getFaceValue();
         }
 
+        System.out.format("%s rolled the die, and got a total of %d.\n", name, fvTot);
+
         piece.setLocation(board.getSquare(piece.getLocation(), fvTot));
+        System.out.format("%s landed on \"%s\"\n", name, piece.getLocation().getName());
     }
 }

@@ -1,7 +1,7 @@
 package ch.heigvd.gen;
 
 public class MonopolyGame {
-    final private int N = 50;
+    final private int N = 20;
     final private Board board;
     final private Die[] die;
     final private Player[] players;
