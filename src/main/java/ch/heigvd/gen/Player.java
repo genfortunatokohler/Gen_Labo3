@@ -32,10 +32,14 @@ public class Player {
     }
 
     public void addCash(int cash) {
+        if(cash < 0)
+            throw new IllegalArgumentException("negativeCash");
         this.cash += cash;
     }
 
     public void reduceCash(int cash) {
+        if(cash < 0)
+            throw new IllegalArgumentException("negativeCash");
         this.cash -= cash;
     }
 
