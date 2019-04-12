@@ -10,7 +10,13 @@ public class Board {
     private final ArrayList<Square> squares;
 
     public Board() {
-        this(IntStream.range(0, 40).mapToObj(Integer::toString).collect(Collectors.toList()));
+        ArrayList<Square> labels = new ArrayList<>();
+
+        labels.add(new Square("Go"));
+        for (int i = 1; i < 40; ++i)
+            labels.add(new Square(String.format("Square %d", i)));
+
+        squares = labels;
     }
 
     public Board(List<String> labels) {
