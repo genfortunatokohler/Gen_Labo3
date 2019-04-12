@@ -1,17 +1,17 @@
 package ch.heigvd.gen;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SquareTest {
-    String name = "test";
+    static String name = "test";
 
-    Square s;
+    static Square s;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         s = new Square(name);
     }
 

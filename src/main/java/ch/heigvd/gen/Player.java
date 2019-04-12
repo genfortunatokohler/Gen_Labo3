@@ -31,10 +31,18 @@ public class Player {
         return cash;
     }
 
+    public void addCash(int cash) {
+        this.cash += cash;
+    }
+
+    public void setLocation(Square s) {
+        this.piece.setLocation(s);
+    }
+
     public void takeTurn() {
         int fvTot = 0;
 
-        for(Die dice : die) {
+        for (Die dice : die) {
             dice.roll();
             fvTot += dice.getFaceValue();
         }
