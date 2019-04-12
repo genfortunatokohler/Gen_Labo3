@@ -6,13 +6,17 @@ public class Player {
     final private String name;
     final private Piece piece;
 
-    public Player(Board board, Die[] die, String name, Piece piece) {
+    private int cash;
+
+    public Player(Board board, Die[] die, String name, Piece piece, int cash) {
         this.board = board;
         this.die = die;
         this.name = name;
 
         this.piece = piece;
         piece.setLocation(board.getSquares().get(0));
+
+        this.cash = cash;
     }
 
     public String getName() {
@@ -21,6 +25,10 @@ public class Player {
 
     public Piece getPiece() {
         return piece;
+    }
+
+    public int getCash() {
+        return cash;
     }
 
     public void takeTurn() {
