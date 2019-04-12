@@ -19,4 +19,12 @@ public class Piece {
     public void setLocation(Square location) {
         this.location = location;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Piece))
+            return false;
+        Piece p = (Piece) obj;
+        return name.equals(p.name) && location.equals(p.location);
+    }
 }

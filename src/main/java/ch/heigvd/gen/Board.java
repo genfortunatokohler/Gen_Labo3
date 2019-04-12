@@ -12,22 +12,24 @@ public class Board {
     public Board() {
         ArrayList<Square> labels = new ArrayList<>();
 
-        labels.add(new Square("Go"));
+        labels.add(new GoSquare());
         for (int i = 1; i < 40; ++i)
-            labels.add(new Square(String.format("Square %d", i)));
+            labels.add(new RegularSquare(String.format("Square %d", i)));
+
+        RegularSquare jail = new RegularSquare("Jail");
+
+        labels.set(4, new IncomeTaxSquare());
+        labels.set(10, jail);
+        labels.set(30, new GoToJailSquare(jail));
 
         squares = labels;
     }
 
-    public Board(List<String> labels) {
-        if (labels != null && labels.size() != squareCount)
+    public Board(ArrayList<Square> squares) {
+        if (squares != null && squares.size() != squareCount)
             throw new IllegalArgumentException();
 
-        squares = new ArrayList<>(squareCount);
-
-        for (int i = 0; i < squareCount; i++) {
-            squares.add(new Square(labels.get(i)));
-        }
+        this.squares = squares;
 
     }
 
