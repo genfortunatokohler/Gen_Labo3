@@ -17,7 +17,7 @@ class PlayerTest {
     @BeforeAll
     static void setUp() {
         board = new Board();
-        player = new Player(board, die, name, piece);
+        player = new Player(board, die, name, piece, 500);
     }
 
     @Test
@@ -29,7 +29,12 @@ class PlayerTest {
     void getPiece() {
         assertEquals(piece, player.getPiece());
     }
-    
+
+    @Test
+    void getCash() {
+        assertEquals(500, player.getCash());
+    }
+
     @RepeatedTest(100)
     void takeTurn() {
         int oldLoc = board.getSquares().indexOf(player.getPiece().getLocation());

@@ -44,7 +44,7 @@ public class MonopolyGame {
         Board board = new Board();
         Die[] die = {new Die(), new Die()};
         Piece[] pieces = {new Piece("Iron"), new Piece("Horseshoe")};
-        Player[] players = {new Player(board, die, "Pierre", pieces[0]), new Player(board, die, "Filipe", pieces[1])};
+        Player[] players = {new Player(board, die, "Pierre", pieces[0], 2500), new Player(board, die, "Filipe", pieces[1], 2500)};
         MonopolyGame monopolyGame = new MonopolyGame(board, die, players);
 
         monopolyGame.playGame();
