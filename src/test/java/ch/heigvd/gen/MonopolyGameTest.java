@@ -13,7 +13,7 @@ class MonopolyGameTest {
     static Die[] die;
     static Piece[] pieces;
     static Player[] players;
-    static MonopolyGame monopolyGame = new MonopolyGame(board, die, players);
+    static MonopolyGame monopolyGame;
 
     @BeforeEach
     void reset() {
