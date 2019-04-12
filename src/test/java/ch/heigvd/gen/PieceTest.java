@@ -13,7 +13,7 @@ class PieceTest {
 
     @BeforeEach
     void setUp() {
-        l = new Square(lName);
+        l = new RegularSquare(lName);
         p = new Piece(pName);
     }
 

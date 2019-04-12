@@ -8,16 +8,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
-    static String name = "Toto";
-    static Piece piece = new Piece("name");
-    static Die[] die = {new Die(), new Die()};
+    static String name;
+    static Piece piece;
+    static Die[] die;
     static Board board;
     static Player player;
+    static int jail;
+    static int goToJail;
 
     @BeforeAll
     static void setUp() {
+        name = "Toto";
+        piece = new Piece("name");
+        die = new Die[]{new Die(), new Die()};
         board = new Board();
         player = new Player(board, die, name, piece, 500);
+
+        jail = 10;
+        goToJail = 30;
     }
 
     @Test
@@ -76,6 +84,6 @@ class PlayerTest {
         int newLoc = board.getSquares().indexOf(player.getPiece().getLocation());
 
         int shift = Math.floorMod((newLoc - oldLoc), board.getSquares().size());
-        assertTrue(shift >= 2 && shift <= 12, Integer.toString(shift));
+        assertTrue(shift >= 2 && shift <= 12 || (newLoc == jail && (oldLoc >= goToJail - 12 && oldLoc <= goToJail - 2)), Integer.toString(shift));
     }
 }

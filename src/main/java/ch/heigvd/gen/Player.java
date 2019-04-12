@@ -32,13 +32,13 @@ public class Player {
     }
 
     public void addCash(int cash) {
-        if(cash < 0)
+        if (cash < 0)
             throw new IllegalArgumentException("negativeCash");
         this.cash += cash;
     }
 
     public void reduceCash(int cash) {
-        if(cash < 0)
+        if (cash < 0)
             throw new IllegalArgumentException("negativeCash");
         this.cash -= cash;
     }
@@ -59,5 +59,15 @@ public class Player {
 
         piece.setLocation(board.getSquare(piece.getLocation(), fvTot));
         System.out.format("%s landed on \"%s\"\n", name, piece.getLocation().getName());
+
+        piece.getLocation().landedOn(this);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Player))
+            return false;
+        Player p = (Player) obj;
+        return piece.equals(p.getPiece()) && name.equals(p.getName()) && cash == p.getNetWorth();
     }
 }
