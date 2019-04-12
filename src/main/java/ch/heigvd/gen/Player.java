@@ -27,12 +27,16 @@ public class Player {
         return piece;
     }
 
-    public int getCash() {
+    public int getNetWorth() {
         return cash;
     }
 
     public void addCash(int cash) {
         this.cash += cash;
+    }
+
+    public void reduceCash(int cash) {
+        this.cash -= cash;
     }
 
     public void setLocation(Square s) {
