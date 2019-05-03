@@ -2,19 +2,19 @@ package ch.heigvd.gen;
 
 public class Player {
     final private Board board;
-    final private Die[] die;
+    final private Cup cup;
     final private String name;
     final private Piece piece;
 
     private int cash;
 
-    public Player(Board board, Die[] die, String name, Piece piece, int cash) {
+    public Player(Board board, Cup cup, String name, String piece, int cash) {
         this.board = board;
-        this.die = die;
+        this.cup = cup;
         this.name = name;
 
-        this.piece = piece;
-        piece.setLocation(board.getSquares().get(0));
+        this.piece = new Piece(piece);
+        this.piece.setLocation(board.getSquares().get(0));
 
         this.cash = cash;
     }
@@ -48,16 +48,12 @@ public class Player {
     }
 
     public void takeTurn() {
-        int fvTot = 0;
+        cup.roll();
+        int cupTot = cup.getTotal();
 
-        for (Die dice : die) {
-            dice.roll();
-            fvTot += dice.getFaceValue();
-        }
+        System.out.format("%s rolled the die, and got a total of %d.\n", name, cupTot);
 
-        System.out.format("%s rolled the die, and got a total of %d.\n", name, fvTot);
-
-        piece.setLocation(board.getSquare(piece.getLocation(), fvTot));
+        piece.setLocation(board.getSquare(piece.getLocation(), cupTot));
         System.out.format("%s landed on \"%s\"\n", name, piece.getLocation().getName());
 
         piece.getLocation().landedOn(this);

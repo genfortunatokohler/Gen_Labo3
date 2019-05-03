@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
     static String name;
-    static Piece piece;
-    static Die[] die;
+    static String piece;
+    static Cup cup;
     static Board board;
     static Player player;
     static int jail;
@@ -19,10 +19,10 @@ class PlayerTest {
     @BeforeAll
     static void setUp() {
         name = "Toto";
-        piece = new Piece("name");
-        die = new Die[]{new Die(), new Die()};
+        piece = "name";
+        cup = new Cup(new Die[]{new Die(), new Die()});
         board = new Board();
-        player = new Player(board, die, name, piece, 500);
+        player = new Player(board, cup, name, piece, 500);
 
         jail = 10;
         goToJail = 30;
@@ -35,7 +35,7 @@ class PlayerTest {
 
     @Test
     void getPiece() {
-        assertEquals(piece, player.getPiece());
+        assertEquals(piece, player.getPiece().getName());
     }
 
     @Test
